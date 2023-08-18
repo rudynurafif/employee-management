@@ -7,40 +7,45 @@
               <div class="row justify-content-center">
                 <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
   
-                  <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Register</p>
+                  <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Register Admin</p>
   
                   <form class="mx-1 mx-md-4" [formGroup]="registerForm" (ngSubmit)="register()">
   
                     <div class="d-flex flex-row align-items-center mb-4">
                       <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                       <div class="form-outline flex-fill mb-0">
-                        <input formControlName="fullName" type="text" id="form3Example1c" class="form-control" />
-                        <label class="form-label" for="form3Example1c">Your Name</label>
+                        <label class="form-label" for="form3Example1c">Full Name</label>
+                        <input formControlName="fullName" type="text" id="form3Example1c" class="form-control" placeholder="Enter your full name" />
+                        <span class="text-danger" *ngIf="registerForm.controls['fullName'].dirty && registerForm.hasError('required', 'fullName')">*Name is required</span>
                       </div>
                     </div>
   
                     <div class="d-flex flex-row align-items-center mb-4">
                       <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                       <div class="form-outline flex-fill mb-0">
-                        <input formControlName="email" type="email" id="form3Example3c" class="form-control" />
                         <label class="form-label" for="form3Example3c">Your Email</label>
+                        <input formControlName="email" type="email" id="form3Example3c" class="form-control" placeholder="Enter a valid email address" />
+                        <span class="text-danger" *ngIf="registerForm.controls['email'].dirty && registerForm.hasError('required', 'email')">*Email is required</span>
+
                       </div>
                     </div>
   
                     <div class="d-flex flex-row align-items-center mb-4">
                       <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                       <div class="form-outline flex-fill mb-0">
-                        <input formControlName="password" type="password" id="form3Example4c" class="form-control" />
                         <label class="form-label" for="form3Example4c">Password</label>
+                        <input formControlName="password" type="password" id="form3Example4c" class="form-control" placeholder="Enter password" />
+                        <span class="text-danger" *ngIf="registerForm.controls['password'].dirty && registerForm.hasError('required', 'password')">*Password is required</span>
+
                       </div>
                     </div>
   
                     <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                      <button type="submit" class="btn btn-primary btn-lg">Register</button>
+                      <button type="submit" class="btn btn-primary btn-lg" [disabled]="registerForm.invalid">Register</button>
                     </div>
 
                     <p class="small fw-bold mt-2 pt-1 mb-0">Already have an account? <a
-                    class="link-primary" routerLink="/login">Login</a></p>
+                    class="link-primary" routerLink="/login">Login here</a></p>
   
                   </form>
   

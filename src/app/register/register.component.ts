@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { FormGroup, FormBuilder } from "@angular/forms"
+import { FormGroup, FormBuilder, Validators } from "@angular/forms"
 import { Router } from '@angular/router';
 
 @Component({
@@ -20,10 +20,14 @@ export class RegisterComponent {
 
   ngOnInit() : void {
     this.registerForm = this.formBuilder.group({
-      fullName : [''],
-      email : [''],
-      password : ['']
+      fullName : ['', Validators.required, Validators.minLength(3)],
+      email : ['', Validators.required],
+      password : ['', Validators.required]
     })
+  }
+
+  form(property : string) : FormGroup {
+    return this.registerForm.get(property) as FormGroup
   }
 
   register() {
