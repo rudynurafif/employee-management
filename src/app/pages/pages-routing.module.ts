@@ -15,7 +15,7 @@ const routes: Routes = [
   },
   {
     path : 'form/:id',
-    component : AddEmployeeComponent,
+    component : EmployeeDetailComponent,
   },
 ];
 

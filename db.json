@@ -1237,6 +1237,30 @@
       "group": "Operations",
       "description": "2023-08-30T17:00:00.000Z",
       "id": 101
+    },
+    {
+      "username": "test2",
+      "firstName": "test2",
+      "lastName": "test2",
+      "email": "test@test.com",
+      "birthDate": "2023-08-17T17:00:00.000Z",
+      "basicSalary": "10000123",
+      "status": "inactive",
+      "group": "Marketing",
+      "description": "2023-08-21T17:00:00.000Z",
+      "id": 102
+    },
+    {
+      "username": "rudynurafif",
+      "firstName": "Rudy",
+      "lastName": "Nurafif",
+      "email": "rudynurafif@gmail.com",
+      "birthDate": "1998-04-04T17:00:00.000Z",
+      "basicSalary": "9000000",
+      "status": "active",
+      "group": "IT",
+      "description": "2025-08-18T17:00:00.000Z",
+      "id": 103
     }
   ]
 }
