@@ -56,16 +56,14 @@ export class AddEmployeeComponent {
         timer: 1500
       })  
 
-      const newEmployee = { ...this.employeeForm.value, id: Date.now() };
       setTimeout(() => {
-        this._empService.addEmployee(newEmployee).subscribe({
+        this._empService.addEmployee(this.employeeForm.value).subscribe({
           next : (val : any) => {
-            console.log(newEmployee)
+            console.log(this.employeeForm.value)
             this.router.navigateByUrl('/employee')
-          }
+          }, error : console.log
         })
       }, 1500);
-   
     }
   }
 
