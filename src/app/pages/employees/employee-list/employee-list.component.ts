@@ -5,6 +5,8 @@ import {MatSort, MatSortModule} from '@angular/material/sort';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-employee-list',
@@ -26,7 +28,8 @@ export class EmployeeListComponent {
   @ViewChild(MatSort) sort!: MatSort;
 
   constructor(
-    private _empService : EmpolyeeService
+    private _empService : EmpolyeeService,
+    private _router : Router
   ) {}
 
   ngOnInit() {
@@ -54,10 +57,38 @@ export class EmployeeListComponent {
     })
   }
 
+  getDetail(id : string) {
+    this._router.navigateByUrl(`/employee/form/${id}`)
+    return this._empService.getEmployeeDetail(id)
+  }
+
   editEmployee(id: number) {
   }
 
-  deleteEmployee(id: number) {
+  deleteEmployee(id: string) {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You will not be able to recover this todo!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, cancel'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this._empService.deleteEmployee(id).subscribe(() => {
+          this.getEmployee();
+          Swal.fire('Deleted!', 'Your todo has been deleted.', 'success');
+        });
+      } else if (
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        Swal.fire(
+          'Cancelled',
+          'Your employee data is safe :)',
+          'success'
+        )
+      }
+    });
   }
 
 }

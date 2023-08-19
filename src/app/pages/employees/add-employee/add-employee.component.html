@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg fixed-top container-fluid" style="background-color: #8ac7f3">
     <div class="container-fluid">
-        <a class="navbar-brand fw-medium" routerLink="/employee">Add Employee Form</a>
+        <a class="navbar-brand fw-medium" routerLink="/employee">Employee Form</a>
         <div class="flex">
             <button mat-raised-button color="warn" routerLink="/login">Logout</button>
 
@@ -37,7 +37,7 @@
 
             <mat-form-field appearance="outline" class="mt-3">
                 <mat-label>Email</mat-label>
-                <input matInput type="email" placeholder="Insert email" formControlName="email">
+                <input matInput type="email" placeholder="Insert a valid email format" formControlName="email">
                 <mat-error *ngIf="employeeForm.get('email')?.invalid && employeeForm.get('email')?.touched">
                     Email is required and need to be a valid format
                 </mat-error>
@@ -50,13 +50,13 @@
                 <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
                 <mat-error *ngIf="employeeForm.get('birthDate')?.invalid && employeeForm.get('birthDate')?.touched">
-                    Birth date is required and date cannot exceed today
+                    Birth date is required and date cannot exceed today's date
                 </mat-error>
             </mat-form-field>
 
             <mat-form-field class="mt-2" appearance="outline" class="mt-3">
                 <mat-label>Basic Salary</mat-label>
-                <input matInput type="number" placeholder="Insert basic salary" formControlName="basicSalary">
+                <input matInput type="text" placeholder="Ex. 5000000" formControlName="basicSalary">
                 <mat-hint>*in rupiah</mat-hint>
                 <mat-error *ngIf="employeeForm.get('basicSalary')?.invalid && employeeForm.get('basicSalary')?.touched">
                     Basic Salary is required
@@ -99,7 +99,7 @@
             </mat-form-field>
 
             <div class="action my-5">
-                <button mat-raised-button class="me-3" color="warn" routerLink="/employee">Cancel</button>
+                <button mat-raised-button class="me-3" color="warn" routerLink="/employee">Go Back</button>
                 <button mat-raised-button color="primary" type="submit" [disabled]="isFormInvalid">Save</button>
 
             </div>

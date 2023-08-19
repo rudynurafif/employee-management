@@ -10,12 +10,12 @@ const routes: Routes = [
     component : EmployeeListComponent,
   },
   {
-    path : 'add-employee',
+    path : 'form',
     component : AddEmployeeComponent,
   },
   {
-    path : 'employee-detail/:username',
-    component : EmployeeDetailComponent,
+    path : 'form/:id',
+    component : AddEmployeeComponent,
   },
 ];
 

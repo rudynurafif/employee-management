@@ -1227,15 +1227,15 @@
       "description": "5/13/2021"
     },
     {
-      "username": "a",
-      "firstName": "a",
-      "lastName": "a",
-      "email": "a@s",
-      "birthDate": "2023-08-03T17:00:00.000Z",
-      "basicSalary": 1,
+      "username": "usernametest",
+      "firstName": "firstnametest",
+      "lastName": "lastnametest",
+      "email": "test@mail.com",
+      "birthDate": "2023-08-17T17:00:00.000Z",
+      "basicSalary": "5123123",
       "status": "active",
-      "group": "Human Resources",
-      "description": "2023-08-23T17:00:00.000Z",
+      "group": "Operations",
+      "description": "2023-08-30T17:00:00.000Z",
       "id": 101
     }
   ]
