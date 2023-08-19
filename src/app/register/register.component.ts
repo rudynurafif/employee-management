@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms"
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register',
@@ -32,7 +33,12 @@ export class RegisterComponent {
 
   register() {
     this.http.post<any>('http://localhost:3000/registeredUsers', this.registerForm.value).subscribe(res => {
-      alert("Register successful")
+      Swal.fire({
+        icon: 'success',
+        title: 'Your work has been saved',
+        showConfirmButton: false,
+        timer: 1500
+      }) 
       this.registerForm.reset()
       this.router.navigate(['login'])
     }, err => {

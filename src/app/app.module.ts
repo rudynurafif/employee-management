@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import { EmployeeListComponent } from './pages/employee-list/employee-list.component';
 import { RegisterComponent } from './register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
@@ -17,16 +16,14 @@ import { MatFormFieldControl, MatFormFieldModule } from '@angular/material/form-
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
-import { EmployeesComponent } from './pages/employee-list/employees/employees.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    EmployeeListComponent,
     RegisterComponent,
     NotFoundComponent,
-    EmployeesComponent
+  
   ],
   imports: [
     BrowserModule,

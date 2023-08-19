@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -32,9 +33,14 @@ export class LoginComponent {
         return u.email === this.loginForm.value.email && u.password === this.loginForm.value.password
       })
       if (user) {
-        alert('Successfully login')
+        Swal.fire({
+          icon: 'success',
+          title: 'Successfully login!',
+          showConfirmButton: false,
+          timer: 1500
+        })
         this.loginForm.reset()
-        this.router.navigate(['employee-list'])
+        this.router.navigate(['employee'])
       } else {
         alert('email / password is incorrect!')
       }
