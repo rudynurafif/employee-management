@@ -17,7 +17,8 @@ export class EmployeeListComponent {
     'firstName',
     'email',
     'status',
-    'group'
+    'group',
+    'actions'
   ];
   dataSource!: MatTableDataSource<any>;
 
@@ -51,6 +52,12 @@ export class EmployeeListComponent {
       },
       error : console.log
     })
+  }
+
+  editEmployee(id: number) {
+  }
+
+  deleteEmployee(id: number) {
   }
 
 }

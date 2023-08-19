@@ -4,7 +4,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatDatepicker } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EmpolyeeService } from '../empolyee.service';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
@@ -20,12 +20,11 @@ export class AddEmployeeComponent {
   employeeForm : FormGroup;
 
   group : string[] = [
-    "Human Resources",
-    "IT",
-    "Marketing",
-    "Operations",
-    "Sales",
-    "Finance"
+    "Sales", "Marketing", "Finance", "Human Resources", "Operations", "IT", "Research and Development", "Customer Service", "Legal", "Administration"
+  ]
+
+  status : string[] = [
+    "active", "inactive", "on leave"
   ]
 
   constructor(
@@ -35,23 +34,38 @@ export class AddEmployeeComponent {
     private http : HttpClient
   ) {
     this.employeeForm = this._fb.group({
-      username: '',
-      firstName : '',
-      lastName : '',
-      email : '',
-      birthDate : '',
-      basicSalary : '',
-      status : '',
-      group : '',
-      description : ''
+      username: ['', Validators.required],
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      birthDate: ['', Validators.required, this.birthDateAsyncValidator],
+      basicSalary: ['', [Validators.required, Validators.pattern(/^\d+$/)]],
+      status: ['', Validators.required],
+      group: ['', Validators.required],
+      description: ['', Validators.required]
     })
   }
+
+  birthDateAsyncValidator(control: AbstractControl): Promise<{ [key: string]: boolean } | null> {
+    return new Promise((resolve) => {
+      const selectedDate = new Date(control.value);
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+  
+      if (selectedDate > today) {
+        resolve({ 'birthDateInvalid': true });
+      } else {
+        resolve(null);
+      }
+    });
+  }
+  
 
   submitData() {
     if (this.employeeForm.valid) {
       Swal.fire({
         icon: 'success',
-        title: 'Your work has been saved',
+        title: 'Successfully create employee data',
         showConfirmButton: false,
         timer: 1500
       })  
@@ -65,6 +79,10 @@ export class AddEmployeeComponent {
         })
       }, 1500);
     }
+  }
+
+  get isFormInvalid() {
+    return this.employeeForm.invalid;
   }
 
 }
